@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Queue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html"class="active">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixtoprefix.html">Infix to Prefix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Queue (Antrean)</h2>
+                <p>Queue adalah struktur data FIFO (First In First Out). Data yang pertama masuk akan menjadi yang pertama keluar.</p>
+                <h2>Ilustrasi</h2>
+                <img src="foto/queue.jpeg" alt="queue" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+from collections import deque
+
+queue = deque()
+
+# Enqueue (tambah data)
+queue.append(10)
+queue.append(20)
+queue.append(30)
+
+print("Queue:", queue)
+
+# Dequeue (hapus data pertama)
+queue.popleft()
+
+print("Setelah dequeue:", queue)
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>Antrian kasir: Masuk: A → B → C Keluar: A dulu</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

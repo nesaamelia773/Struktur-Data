@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Deque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html"class="active">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Deque</h2>
+                <p>Deque memungkinkan penambahan dan penghapusan dari dua sisi (depan & belakang)</p>
+                <h2>Ilustrasi</h2>
+                 <img src="foto/deque.jpeg" alt="deque" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+from collections import deque
+
+# Membuat deque kosong
+dq = deque()
+
+print("=== TAMBAH DATA ===")
+
+# Tambah dari belakang
+dq.append(10)
+dq.append(20)
+dq.append(30)
+dq.append(40)
+
+print("Setelah tambah belakang:", list(dq))
+
+
+print("\n=== HAPUS DARI DEPAN ===")
+
+# Hapus dari depan
+hapus_depan = dq.popleft()
+print("Elemen yang dihapus dari depan:", hapus_depan)
+print("Deque sekarang:", list(dq))
+
+
+print("\n=== HAPUS DARI BELAKANG ===")
+
+# Hapus dari belakang
+hapus_belakang = dq.pop()
+print("Elemen yang dihapus dari belakang:", hapus_belakang)
+print("Deque sekarang:", list(dq))
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>Deque adalah struktur data yang memungkinkan:
+
+- penambahan data dari depan dan belakang
+- penghapusan data dari depan dan belakang
+
+Langkah pada program:
+
+1. Menambahkan data 10, 20, 30, 40 ke deque
+2. Menghapus elemen dari depan (10)
+3. Menghapus elemen dari belakang (40)</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

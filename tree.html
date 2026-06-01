@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Tree</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html">Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html"class="active">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Tree</h2>
+                <p>Tree adalah struktur data non-linear yang digunakan untuk merepresentasikan hubungan hierarki antar elemen. Berbeda dengan Array, Linked List, Stack, atau Queue yang bersifat linear (berurutan satu dimensi), Tree menyimpan data secara bercabang seperti pohon terbalik.</p><br>
+
+                        <p>Istilah-Istilah Penting dalam Tree:</p><br>
+                       <p> Node (Simpul): Wadah yang digunakan untuk menyimpan data.</p><br>
+
+                        <p>Root (Akar): Node paling atas yang menjadi awal mula dari Tree. Root tidak memiliki parent.</p><br>
+
+                       <p> Parent (Induk): Node yang berada di atas node lain dan terhubung langsung.</p><br>
+
+                       <p> Child (Anak): Node turunan yang berada langsung di bawah parent.</p><br>
+
+                       <p> Leaf (Daun): Node yang berada di paling bawah dan tidak memiliki child lagi.</p><br>
+
+                       <p> Edge (Sisi/Garis): Garis hubung antara parent dan child.</p><br>
+                 <h2>Ilustrasi</h2>
+                 <img src="foto/tree.jpeg" alt="deque" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python (Binary Tree)</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+# 1. Definisikan struktur untuk satu Node
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None   # Menyimpan pointer ke child kiri
+        self.right = None  # Menyimpan pointer ke child kanan
+
+# 2. Fungsi untuk menampilkan isi tree (In-Order Traversal)
+def cetak_in_order(akar):
+    if akar is not None:
+        # Kunjungi sub-tree kiri terlebih dahulu
+        cetak_in_order(akar.left)
+        
+        # Cetak data pada node saat ini
+        print(akar.data, end=" ")
+        
+        # Kunjungi sub-tree kanan
+        cetak_in_order(akar.right)
+
+
+# MEMBENTUK STRUKTUR TREE MANUALLY
+
+
+# Membuat node-node secara manual
+root = Node(10)
+node_B = Node(5)
+node_C = Node(15)
+node_D = Node(3)
+node_E = Node(7)
+
+# Menyambungkan antar node sesuai hierarki
+root.left = node_B      # 5 menjadi child kiri dari 10
+root.right = node_C     # 15 menjadi child kanan dari 10
+node_B.left = node_D    # 3 menjadi child kiri dari 5
+node_B.right = node_E   # 7 menjadi child kanan dari 5
+
+# Menampilkan hasil cetakan tree
+print("Hasil Penelusuran In-Order:")
+cetak_in_order(root)
+print()
+</code>
+    </pre>
+    <h2>Penjelasan Kodde :</h2>
+    <p>A. Struktur Node (class Node)</p><br>
+                    <p>Saat kita menulis root = Node(10), komputer akan menyediakan sebuah kotak memori yang berisi tiga slot:</p><br>
+
+                    <p>data: Berisi nilai utamanya (misal: 10).</p><br>
+
+                    <p>left: Awalnya bernilai None. Berfungsi seperti tangan kiri yang siap memegang node lain.</p><br>
+
+                    <p>right: Awalnya bernilai None. Berfungsi seperti tangan kanan yang siap memegang node lain.</p><br>
+
+                    <p>B. Cara Kerja Algoritma cetak_in_order (Rekursif)</p><br>
+
+                    <p>Fungsi cetak_in_order menggunakan teknik rekursif (fungsi yang memanggil dirinya sendiri) untuk menelusuri setiap cabang pohon. Aturan dari In-Order adalah: Selesaikan jalur kiri, cetak diri sendiri, lalu selesaikan jalur kanan.</p><br>
+
+                    <p>Berikut adalah urutan jalannya algoritma (langkah demi langkah):</p><br>
+
+                    <p>Panggilan 1: Fungsi masuk membawa root (Node 10). Karena Node 10 tidak None, program langsung mengeksekusi perintah pertama: cetak_in_order(akar.left), yaitu masuk ke Node 5.</p><br>
+
+                    <p>Panggilan 2: Sekarang berada di Node 5. Program kembali mengeksekusi perintah paling atas: masuk ke sub-tree kirinya, yaitu Node 3.</p><br>
+
+                    <p>Panggilan 3: Sekarang berada di Node 3. Program mencoba masuk ke sub-tree kirinya (akar.left). Karena kiri dari Node 3 adalah None, panggilan ini langsung selesai (return) tanpa mencetak apa pun.</p><br>
+
+                    <p>Kembali ke Panggilan 3: Setelah perintah kiri selesai, program lanjut ke baris berikutnya di Node 3, yaitu print(akar.data). Maka angka 3 dicetak ke layar. Setelah itu, ia memeriksa kanan dari Node 3 (ternyata None, selesai). Node 3 beres sepenuhnya.</p><br>
+
+                    <p>Kembali ke Panggilan 2 (Node 5): Karena proses kiri dari Node 5 (yaitu seluruh cakupan Node 3) sudah selesai, program lanjut ke baris berikutnya di Node 5, yaitu print(akar.data). Angka 5 dicetak.</p><br>
+
+                    <p>Lanjut di Node 5: Program mengeksekusi perintah kanan, yaitu cetak_in_order(akar.right), masuk ke Node 7. Di Node 7, karena kiri dan kanannya None, ia langsung mencetak angka 7. Proses di Node 5 selesai</p><br>
+
+                    <p>Kembali ke Panggilan 1 (Node 10): Jalur kiri dari Node 10 sudah selesai dijelajahi semua. Program lanjut mencetak dirinya sendiri, yaitu angka 10.</p><br>
+
+                    <p>Langkah Terakhir: Program mengeksekusi jalur kanan dari Node 10, yaitu masuk ke Node 15. Karena Node 15 tidak memiliki anak (kiri-kanan None), ia langsung mencetak angka 15.</p><br>
+
+                    <p>Output Akhir di Layar: 3 5 7 10 15</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

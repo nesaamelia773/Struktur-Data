@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Postfix to Infix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html"class="active">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Postfix to Infix</h2>
+                <p>Postfix : AB+</p>
+                 <img src="foto/postfixtoinfix.jpeg" alt="postfixtoinfix" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def postfix_to_infix(expression):
+    stack = []
+
+    for char in expression:
+        if char.isalnum():
+            stack.append(char)
+        else:
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(f"({a}{char}{b})")
+
+    return stack[0]
+
+print(postfix_to_infix("AB+"))
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>Baca dari kanan
+
+Jika operand → masuk stack
+
+Jika operator → ambil 2 operand
+
+Hasil: Infix = (A+B)</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

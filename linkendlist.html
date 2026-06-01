@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Linkendlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html"class="active">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Linkend list</h2>
+                 <p>Linked List adalah struktur data linear yang digunakan untuk menyimpan sekumpulan data. Berbeda dengan Array yang menyimpan data di memori secara berurutan dan berdampingan, Linked List menyimpan data secara acak di memori.</p><br>
+
+                        <p>Untuk menghubungkan data satu dengan yang lain, Linked List menggunakan konsep Pointer (penunjuk). Struktur ini terdiri dari serangkaian elemen yang disebut Node (Simpul). Setiap Node memiliki dua bagian utama:</p><br>
+                       
+                        <p>1. Data: Nilai atau informasi yang ingin disimpan..</p><br>
+
+                        <p>2. Next: Penunjuk (pointer) yang menyimpan alamat memori dari node berikutnya.</p><br>
+
+                       <p>Istilah Penting dalam Linked List:</p><br>
+
+                       <p>Head: Node pertama yang menjadi pintu masuk utama ke seluruh Linked List.</p><br>
+
+                       <p>Tail: Node terakhir dalam Linked List. Ciri utamanya adalah pointer next-nya selalu menunjuk ke None (kosong), menandakan akhir dari list.</p><br>
+
+                 <h2>Ilustrasi</h2>
+                 <img src="foto/linkedlist.jpeg" alt="deque" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+# 1. Definisikan struktur untuk satu Node
+class Node:
+    def __init__(self, data):
+        self.data = data    # Menyimpan nilai data
+        self.next = None    # Pointer ke node berikutnya (awalnya kosong)
+
+# 2. Fungsi untuk menampilkan seluruh isi Linked List
+def cetak_list(head):
+    bantu = head  # Pointer bantuan untuk berjalan dari depan
+    
+    # Lakukan perulangan selama pointer bantuan tidak menemukan ujung kosong (None)
+    while bantu is not None:
+        print(bantu.data, end=" -> ")
+        bantu = bantu.next  # Geser pointer bantuan ke node selanjutnya
+        
+    print("None")  # Menandakan akhir dari Linked List
+
+# MEMBENTUK STRUKTUR LINKED LIST MANUALLY
+
+# Membuat 4 node secara terpisah
+node_pertama = Node(10)
+node_kedua = Node(20)
+node_ketiga = Node(30)
+node_keempat = Node(40)
+
+# Menentukan Head (pintu masuk utama)
+head = node_pertama
+
+# Menyambungkan antar node menggunakan pointer 'next'
+node_pertama.next = node_kedua     # 10 menunjuk ke 20
+node_kedua.next = node_ketiga       # 20 menunjuk ke 30
+node_ketiga.next = node_keempat     # 30 menunjuk ke 40
+
+# Menampilkan isi Linked List
+print("Isi Linked List:")
+cetak_list(head)
+</code>
+    </pre>
+    <h2>Penjelasan Kodde :</h2>
+    <p>Cara Kerja Algoritma</p><br>
+                    <p>Fungsi cetak_list menggunakan variabel bantuan bernama bantu untuk menelusuri rantai dari awal hingga akhir tanpa merusak posisi head asli.</p><br>
+
+                    <p>Berikut adalah simulasi jalannya perulangan while bantu is not None:</p><br>
+
+                    <p>1. Persiapan: Variabel bantu diatur agar menunjuk ke node yang sama dengan head (yaitu node_pertama yang berisi data 10).</p><br>
+
+                    <p>2. Iterasi 1: * Apakah bantu bernilai None? Tidak (karena isinya adalah Node 10).</p><br>
+
+                    <p>Program mengeksekusi print(bantu.data), maka angka 10 -> dicetak ke layar.</p><br>
+
+                    <p>Program mengeksekusi bantu = bantu.next. Variabel bantu sekarang berpindah memegang Node berikutnya, yaitu Node 20.</p><br>
+
+                    <p>3. Iterasi 2: * Apakah bantu bernilai None? Tidak (isinya Node 20).</p><br>
+
+                    <p>Program mencetak data, menghasilkan 20 ->.</p><br>
+
+                    <p>Variabel bantu bergeser lagi menggunakan bantu.next, sekarang memegang Node 30.</p><br>
+
+                    <p>4. Iterasi 3: * Apakah bantu bernilai None? Tidak (isinya Node 30).</p><br>
+
+                    <p>Program mencetak data, menghasilkan 30 ->.</p><br>
+
+                    <p>Variabel bantu bergeser memegang Node 40.</p><br>
+
+                    <P>5. Iterasi 4: * Apakah bantu bernilai None? Tidak (isinya Node 40).</P><br>
+
+                    <p>Program mencetak data, menghasilkan 40 ->.</p><br>
+
+                    <p>Variabel bantu bergeser ke bantu.next. Karena node_keempat.next bernilai None, maka variabel bantu sekarang menjadi None.</p><br>
+
+                    <p>6. Keluar Perulangan: * Program kembali memeriksa kondisi while. Karena bantu sudah bernilai None, perulangan berhenti.</p><br>
+
+                    <p>Program mengeksekusi perintah terakhir di luar loop: print("None").</p><br>
+
+                    <p>Output Akhir di Layar: 10 -> 20 -> 30 -> 40 -> None</p><br>
+            </div>
+        </main>
+    </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html"class="active">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Linier Search</h2>
+                <p>Linear Search adalah algoritma pencarian yang paling sederhana dan paling mendasar. Bayangkan kamu sedang mencari kunci di dalam sebuah laci yang berisi banyak barang secara acak; kamu akan mengecek satu per satu dari depan ke belakang sampai kunci itu ketemu. Itulah cara kerja Linear Search.</p>
+                <h2>Bagaimana Cara Kerjanya?</h2>
+                <p>- Logikanya sangat lurus (linear):</p>
+
+<p>Mulai dari elemen pertama dalam daftar (indeks 0).</p>
+
+<p>Bandingkan elemen tersebut dengan nilai yang kamu cari (target).</p>
+
+<p>Jika sama, maka pencarian selesai dan posisi (indeks) ditemukan.</p>
+
+<p>Jika tidak sama, pindah ke elemen berikutnya.</p>
+
+<p>Ulangi terus sampai nilai ditemukan atau sampai semua elemen sudah dicek tapi tetap tidak ada.</p>
+ <h2>Ilustrasi</h2>
+                <img src="foto/linier.jpeg" alt="linier" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def linear_search(arr, target):
+    # Loop melalui setiap elemen di dalam array
+    for i in range(len(arr)):
+        # Jika elemen ditemukan
+        if arr[i] == target:
+            return i  # Mengembalikan indeks posisi elemen
+            
+    # Jika sampai loop selesai target tidak ketemu
+    return -1
+
+# Uji coba
+kumpulan_angka = [10, 23, 45, 70, 11, 15]
+target_cari = 70
+
+hasil = linear_search(kumpulan_angka, target_cari)
+
+if hasil != -1:
+    print(f"Angka {target_cari} ketemu di indeks ke-{hasil}")
+else:
+    print("Angka tidak ditemukan dalam daftar")
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>- for i in range(len(arr)): Ini adalah mesin penggeraknya. Kita menyuruh program untuk "berjalan" menelusuri array dari ujung awal sampai akhir.</p>
+
+<p>- if arr[i] == target: Di setiap langkah, kita bertanya: "Apakah kamu angka yang saya cari?".</p>
+
+<p>- return i: Jika jawabannya "Ya", kita stop dan beri tahu di mana lokasinya.</p>
+
+<p>- return -1: Jika seluruh array sudah dilewati dan kode ini jalan, artinya barangnya memang tidak ada. Angka -1 biasanya digunakan sebagai standar "tidak ditemukan".</p>
+           
+            <h2>Binary Search</h2>
+                <p>Binary Search adalah algoritma pencarian yang jauh lebih cerdas dan cepat daripada Linear Search. Namun, ada satu syarat mutlak: datanya harus sudah terurut (sorted).
+
+Kalau Linear Search itu mengecek satu per satu, Binary Search menggunakan teknik "bagi dua" (seperti menebak halaman buku atau mencari kata di kamus).</p>
+                <h2>Bagaimana Cara Kerjanya?</h2>
+                <p>Bayangkan kamu mencari angka 70 dalam daftar yang sudah urut: [10, 20, 30, 40, 50, 60, 70, 80].</p>
+
+<p>Cek Tengah: Lihat angka di paling tengah. Misal tengahnya adalah 40.</p>
+
+<p>Bandingkan: Apakah 70 sama dengan 40? Tidak. Apakah 70 lebih besar? Ya!</p>
+
+<p>Buang Setengah: Karena 70 pasti ada di sebelah kanan 40, kita buang semua angka dari 40 ke kiri. Kita tidak perlu mengeceknya lagi.</p>
+<p>Ulangi: Sekarang kita hanya fokus pada bagian kanan [50, 60, 70, 80]. Cari lagi tengahnya, dan ulangi sampai ketemu.</p>
+ <h2>Ilustrasi</h2>
+                <img src="foto/binary.png" alt="binary" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2  # Mencari indeks tengah
+        tebakan = arr[mid]
+
+        if tebakan == target:
+            return mid  # Ketemu!
+        
+        if tebakan > target:
+            high = mid - 1  # Target ada di sebelah kiri
+        else:
+            low = mid + 1   # Target ada di sebelah kanan
+
+    return -1  # Tidak ketemu
+
+# Uji coba (Data WAJIB urut)
+data = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+target = 70
+
+hasil = binary_search(data, target)
+
+if hasil != -1:
+    print(f"Angka {target} ditemukan di indeks {hasil}")
+else:
+    print("Angka tidak ditemukan")
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>- low & high: Ini adalah pembatas area pencarian kita. Awalnya, areanya adalah seluruh array.</p>
+
+<p>- mid = (low + high) // 2: Kita selalu mengambil titik tengah di setiap putaran.</p>
+
+<p>- if tebakan > target: Jika angka tengah kegedean, kita geser pembatas high ke kiri (mid - 1)..</p>
+
+<p>- else (low = mid + 1): Jika angka tengah kekecilan, kita geser pembatas low ke kanan.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

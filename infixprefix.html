@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Infix to Prefix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html"class="active">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Infix to Prefix</h2>
+                <p>Infix : A + B * C</p>
+                <h2>Ilustrasi</h2>
+                 <img src="foto/infixprefix.jpeg" alt="infixprefix" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def infix_to_prefix(expression):
+    expression = expression[::-1]
+
+    stack = []
+    output = []
+    precedence = {'+':1, '-':1, '*':2, '/':2}
+
+    for char in expression:
+        if char.isalnum():
+            output.append(char)
+        elif char == ')':
+            stack.append(char)
+        elif char == '(':
+            while stack[-1] != ')':
+                output.append(stack.pop())
+            stack.pop()
+        else:
+            while (stack and stack[-1] != ')' and 
+                   precedence[char] < precedence[stack[-1]]):
+                output.append(stack.pop())
+            stack.append(char)
+
+    while stack:
+        output.append(stack.pop())
+
+    return "".join(output[::-1])
+
+print(infix_to_prefix("A+B*C"))</p>
+<h2>Penjelasan</h2>
+<p>Dibalik dulu
+
+Diproses seperti postfix
+
+Hasil dibalik lagi
+
+Hasil: Prefix = +A*BC</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

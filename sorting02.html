@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Sorting02</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html"class="active">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Insertion Sort</h2>
+                <p>Insertion Sort adalah algoritma pengurutan yang cara kerjanya mirip dengan bagaimana kita menyusun kartu di tangan.
+
+Bayangkan Anda memegang tumpukan kartu yang teracak. Anda mengambil satu kartu, lalu membandingkannya dengan kartu-kartu di sebelah kirinya untuk mencari posisi yang tepat, lalu menyelipkannya (insert) di sana. Proses ini diulangi sampai semua kartu berada di posisi yang benar.
+
+Karakteristik Utama:
+
+Efisien untuk data kecil: Sangat cepat jika jumlah datanya sedikit.
+
+Adaptive: Sangat cepat jika data memang sudah hampir urut.
+
+Stable: Tidak mengubah urutan elemen yang nilainya sam</p>
+<h2>Ilustrasi</h2>
+                <img src="foto/insertion.png" alt="insertion" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def insertion_sort(arr):
+    # Dimulai dari indeks ke-1 karena elemen ke-0 dianggap sudah "terurut"
+    for i in range(1, len(arr)):
+        key = arr[i]  # Elemen yang akan disisipkan
+        j = i - 1
+        
+        # Geser elemen yang lebih besar dari key ke kanan
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        
+        # Letakkan key di posisi yang benar
+        arr[j + 1] = key
+
+# Contoh penggunaan
+data = [12, 11, 13, 5, 6]
+insertion_sort(data)
+print("Data setelah diurutkan:", data)
+</code>
+    </pre>
+    <h2>Penjelasan :</h2>
+    <p>Misal array: [5, 2, 9]</p>
+
+<p>1. Iterasi 1 (i=1): key adalah 2.</p>
+
+<p>- Apakah 2 < 5? Ya!</p>
+
+<p>- Geser 5 ke kanan: [5, 5, 9].</p>
+
+<p>- Taruh 2 di depan: [2, 5, 9].</p>
+
+<p>2. Iterasi 2 (i=2): key adalah 9.</p>
+
+<p>- Apakah 9 < 5? Tidak.</p>
+
+<p>- Loop while tidak jalan.</p>
+
+<p>- 9 tetap di tempatnya: [2, 5, 9].</p>
+
+<h2>Quick Sort</h2>
+                <p>Quick Sortadalah salah satu algoritma pengurutan data yang sangat efisien dan populer dalam pemrograman. Algoritma ini menggunakan prinsip Divide and Conquer (bagi dan taklukkan) untuk memecah kumpulan data menjadi bagian-bagian kecil sebelum diurutkan.
+
+Secara teknis, Quick Sort bekerja dengan memilih satu elemen sebagai pivot (titik tumpu), lalu memindahkan elemen lain sedemikian rupa sehingga elemen yang lebih kecil dari pivot berada di sebelah kirinya, dan yang lebih besar berada di sebelah kanannya.</p>
+<h2>Ilustrasi</h2>
+                <img src="foto/quick.jpeg" alt="quick" style="max-width: 100%; margin-top: 10px;">
+                <h2>Artinya:</h2>
+                <p>Memilih satu elemen sebagai pivot
+
+Membagi data menjadi dua bagian:
+
+Nilai lebih kecil dari pivot
+Nilai lebih besar dari pivot
+Mengurutkan kedua bagian secara rekursif
+Quick Sort termasuk algoritma yang cepat dan efisien untuk data besar.
+
+Contoh data :
+
+[8, 3, 1, 7, 0, 10, 2]</p>
+                    <h2>Cara kerja:</h2>
+                    <p>Contoh data:
+
+[8, 3, 1, 7, 0, 10, 2]
+
+Langkah 1:
+
+Pilih pivot = 7
+
+Pisahkan:
+
+Kecil dari 7 = [3,1,0,2] Pivot = [7] Besar dari 7 = [8,10]
+
+Langkah 2:
+
+Urutkan bagian kiri dan kanan lagi.
+
+Bagian kiri:
+
+[3,1,0,2]
+
+Pivot = 1
+
+Kecil = [0] Pivot = [1] Besar = [3,2]
+
+Terus dilakukan sampai semua urut.
+
+Hasil akhir:
+
+[0,1,2,3,7,8,10]</p>
+                    <img src="foto/pivot.jpeg" alt="pivot" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def quick_sort(data):
+    if len(data) <= 1:
+        return data
+    
+    pivot = data[len(data) // 2]
+    
+    kiri = [x for x in data if x < pivot]
+    tengah = [x for x in data if x == pivot]
+    kanan = [x for x in data if x > pivot]
+    
+    return quick_sort(kiri) + tengah + quick_sort(kanan)
+
+# Contoh
+angka = [8, 3, 1, 7, 0, 10, 2]
+hasil = quick_sort(angka)
+
+print("Data awal :", angka)
+print("Data urut :", hasil)
+</code>
+    </pre>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

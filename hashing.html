@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Hashing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html"class="active">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Hashing</h2>
+                <p>Hashing itu ibarat sistem penitipan barang atau loker otomatis. Kalau di Linear atau Binary Search kita harus "mencari" dengan membandingkan angka, di Hashing kita langsung "tahu" di mana barangnya disimpan karena setiap data punya "alamat" uniknya sendiri.
+Dalam pemrograman, Hashing adalah proses mengubah data (seperti nama atau angka) menjadi nilai angka yang tetap, yang disebut Hash Value atau Hash Code, menggunakan fungsi matematika tertentu.</p>
+                <h2>Komponen Hashing:</h2>
+                <p>- Hash Function (Fungsi Hash): Rumus matematika untuk menentukan di mana data akan disimpan.</p>
+
+<p>Hash Table: Array atau tempat penyimpanan data tersebut.</p>
+
+<p>Collision (Tabrakan): Kondisi saat dua data berbeda mendapatkan alamat yang sama (ini masalah yang harus diselesaikan).</p>
+<h2>Ilustrasi</h2>
+                 <img src="foto/hashing.png" alt="hashing" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Contoh Sederhana Logika</h2>
+                    <p>Kita punya fungsi hash sederhana: H(x) = x % 10 (Sisa bagi dengan 10).</p>
+                    <p>Data 25: 25 \pmod{10} = 5. (Simpan di slot nomor 5).</p>
+                    <p>Data 42: 42 \pmod{10} = 2. (Simpan di slot nomor 2).</p>
+                    <p>Data 17: 17 \pmod{10} = 7. (Simpan di slot nomor 7).
+                    <p>Saat mencari angka 42, komputer tidak perlu cek dari depan. Dia langsung hitung $42 \pmod{10} = 2$, lalu langsung buka laci nomor 2. Boom! Ketemu dalam satu langkah.</p>
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+
+class SimpleHashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
+
+    # Fungsi Hash: Menentukan indeks berdasarkan sisa bagi
+    def _hash_function(self, key):
+        return key % self.size
+
+    # Memasukkan data
+    def insert(self, key, value):
+        index = self._hash_function(key)
+        self.table[index] = value
+        print(f"Data {value} disimpan di indeks {index}")
+
+    # Mencari data (Sangat cepat!)
+    def get(self, key):
+        index = self._hash_function(key)
+        return self.table[index]
+
+# Uji coba
+hash_tabel = SimpleHashTable(10)
+
+hash_tabel.insert(25, "Budi")
+hash_tabel.insert(42, "Siti")
+
+print("Cari kunci 42:", hash_tabel.get(42))
+</code>
+    </pre>
+    </p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

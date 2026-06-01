@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Struktur Data - Sorting 03</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Struktur Data</h1></header>
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Materi</h3>
+            <ul>
+        <li><a href="index.html">Pengenalan</a></li>
+                <li><a href="stack.html" >Stack</a></li>
+                <li><a href="queue.html">Queue</a></li>
+                <li><a href="deque.html">Deque</a></li>
+                <li><a href="infixpostfix.html">Infix to Postfix</a></li>
+                <li><a href="infixprefix.html">Infix to Prefix</a></li>
+                <li><a href="prefixtoinfix.html">Prefix to Infix</a></li>
+                <li><a href="postfixtoinfix.html">Postfix to Infix</a></li>
+                <li><a href="evaluasipostfix.html">Evaluasi Postfix</a></li>
+                <li><a href="evaluasiprefix.html">Evaluasi Prefix</a></li>
+                <li><a href="sorting01.html">Sorting 01</a></li>
+                <li><a href="sorting02.html">Sorting 02</a></li>
+                <li><a href="sorthing03.html"class="active">Sorting 03</a></li>
+                <li><a href="searching.html">Searching</a></li>
+                <li><a href="hashing.html">Hashing</a></li>
+                <li><a href="linkendlist.html">Linkend List</a></li>
+                <li><a href="tree.html">Tree</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <div class="card">
+                <h2>Merge Sort</h2>
+                <p>Merge Sort adalah algoritma pengurutan yang menggunakan strategi Divide and Conquer (Bagi dan Taklukkan). Singkatnya, algoritma ini memecah masalah besar menjadi potongan-potongan kecil yang lebih mudah dikelola, lalu menyatukannya kembali dalam keadaan urut.</p>
+                <p>Merge Sort bekerja dengan tiga langkah utama:</p>
+
+<<p>Divide (Bagi): Membagi array menjadi dua bagian secara terus-menerus sampai setiap bagian hanya berisi satu elemen. (Array dengan satu elemen dianggap sudah terurut).</p>
+
+<p>Conquer (Taklukkan): Mengurutkan setiap bagian tersebut.</p>
+
+<p>Combine (Gabungkan/Merge): Menggabungkan bagian-bagian kecil tadi kembali menjadi satu array yang utuh dan sudah urut.</p>
+            <h2>Ilustrasi</h2>
+                <img src="foto/merge.png" alt="merge" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def merge_sort(arr):
+    # Basis: Jika elemen cuma 1, berarti sudah urut
+    if len(arr) <= 1:
+        return arr
+
+    # 1. DIVIDE: Cari titik tengah dan bagi dua
+    mid = len(arr) // 2
+    kiri = arr[:mid]
+    kanan = arr[mid:]
+
+    # Rekursi untuk membagi terus sampai habis
+    kiri = merge_sort(kiri)
+    kanan = merge_sort(kanan)
+
+    # 2. COMBINE: Gabungkan kembali bagian kiri dan kanan
+    return merge(kiri, kanan)
+
+def merge(kiri, kanan):
+    hasil = []
+    i = j = 0
+
+    # Bandingkan elemen dari kedua bagian
+    while i < len(kiri) and j < len(kanan):
+        if kiri[i] < kanan[j]:
+            hasil.append(kiri[i])
+            i += 1
+        else:
+            hasil.append(kanan[j])
+            j += 1
+
+    # Jika ada sisa elemen yang belum dimasukkan
+    hasil.extend(kiri[i:])
+    hasil.extend(kanan[j:])
+    return hasil
+
+# Uji coba
+data = [38, 27, 43, 3, 9, 82, 10]
+data_urut = merge_sort(data)
+print("Hasil Merge Sort:", data_urut)
+</code>
+    </pre>
+    <h2>Penjelasan Kode:</h2>
+    <p>A. Fungsi merge_sort (Pembagian)
+
+Rekursi: Fungsi ini memanggil dirinya sendiri. Ia terus membelah array menjadi kiri dan kanan sampai ukurannya jadi 1 elemen saja.
+
+Base Case: if len(arr) <= 1 adalah remnya. Tanpa ini, kode akan berjalan selamanya (error).</p>
+
+<p>B. Fungsi merge (Penggabungan - Bagian Terpenting)
+Di sinilah pengurutan sebenarnya terjadi. Bayangkan kamu punya dua tumpuk kartu yang masing-masing sudah urut:
+
+Kita bandingkan kartu paling atas di tumpukan kiri dan kanan.
+
+Siapa yang lebih kecil, dia masuk duluan ke tumpukan hasil.
+
+extend: Jika salah satu tumpukan sudah habis, sisa kartu di tumpukan lainnya langsung ditempelkan di paling belakang karena mereka pasti sudah urut.</p>
+          <h2>Sell Sort</h2>
+                <p>Jika pada Insertion Sort kita hanya membandingkan elemen yang bersebelahan (jarak 1), di Shell Sort kita membandingkan elemen dengan jarak (gap) tertentu. Jarak ini perlahan-lahan akan mengecil sampai akhirnya menjadi 1.</p>
+            <h2>Ilustrasi</h2>
+                <img src="foto/Shell.png" alt="shell" style="max-width: 100%; margin-top: 10px;">
+                <div class="card">
+                    <h2>Implementasi Python</h2>
+    <pre style="background-color: #f4f4f4; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+<code>
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2  # Mulai dengan gap besar
+
+    # Terus kurangi gap sampai gap = 0
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            
+            # Lakukan insertion sort untuk elemen dengan jarak 'gap'
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            
+            arr[j] = temp
+        
+        gap //= 2  # Perkecil gap (dibagi dua)
+
+# Uji coba
+data = [12, 34, 54, 2, 3]
+shell_sort(data)
+print("Hasil Shell Sort:", data)
+</code>
+    </pre>
+    <h2>Penjelasan Kode:</h2>
+    <p>gap = n // 2: Ini menentukan jarak awal. Jika data ada 10, kita bandingkan angka yang berjarak 5 posisi.</p>
+<<p>while j >= gap and arr[j - gap] > temp: Ini mirip sekali dengan while di Insertion Sort. Bedanya, kalau di Insertion Sort kita pakainya j - 1, di sini kita pakai j - gap.</p>
+
+<p>gap //= 2: Setiap putaran besar selesai, jaraknya makin rapat. 5 → 2 → 1.</p>        
+</div>
+        </main>
+    </div>
+</body>
+</html>
